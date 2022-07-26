@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BuildingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
 Route::get('/login-tema', function () {
@@ -22,10 +23,17 @@ Route::get('/login-tema', function () {
 });
 
 
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+
+
+// Barang Group
+Route::prefix('dashboard')->middleware(['auth'])->group(function () {
+    Route::get('building/{slug}/edit', [BuildingController::class, 'edit']);
+    Route::resource('building', BuildingController::class);
+});
+
+
+require __DIR__ . '/auth.php';

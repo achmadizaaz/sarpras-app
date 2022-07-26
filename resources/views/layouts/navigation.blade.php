@@ -18,7 +18,7 @@
             <i class="fas fa-columns"></i> <span>Gedung</span>
         </a>
           <ul class="dropdown-menu">
-            <li><a class="nav-link" href="#">Gedung Utama</a></li>
+            <li><a class="nav-link" href="{{ route('building.index') }}">Gedung Utama</a></li>
             <li><a class="nav-link" href="#">Sub Gedung</a></li>
             <li><a class="nav-link" href="#">Ruangan</a></li>
           </ul>
